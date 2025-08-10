@@ -1,66 +1,64 @@
-## Foundry
+# OurToken (ERC-20)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+OurToken is a simple ERC-20 token implementation written in Solidity using OpenZeppelin’s ERC-20 standard.  
+It comes with a complete Foundry test suite covering transfers, approvals, allowances, events, and token metadata.
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## 📌 Features
 
-## Documentation
+- **ERC-20 Standard** compliant token.
+- Built using **OpenZeppelin** contracts for security and reliability.
+- **Automated testing** with Foundry (`forge-std`).
+- Includes tests for:
+  - Token metadata (name, symbol, decimals)
+  - Transfers (success, failure, and event emission)
+  - Approvals & allowances
+  - `transferFrom` behavior
+  - Total supply verification
 
-https://book.getfoundry.sh/
+---
 
-## Usage
+## 🛠 Tech Stack
 
-### Build
+- **Solidity** `^0.8.30`
+- **OpenZeppelin Contracts**
+- **Foundry** for testing
 
-```shell
-$ forge build
+---
+
+## 🚀 Getting Started
+
+### 1 Install Foundry
+
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
 ```
 
-### Test
+### 2 Install Dependencies
 
-```shell
-$ forge test
+```forge install OpenZeppelin/openzeppelin-contracts
+
 ```
 
-### Format
+### Note: these commands can vary according to the Makefile
 
-```shell
-$ forge fmt
+### 3 Build
+
+```
+forge build
 ```
 
-### Gas Snapshots
+### 4 Run tests
 
-```shell
-$ forge snapshot
+```
+forge test
 ```
 
-### Anvil
+### 5 Run a Specific Test
 
-```shell
-$ anvil
 ```
+forge test --match-test testBobBalance -vvvv
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
