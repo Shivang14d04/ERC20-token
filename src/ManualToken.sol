@@ -1,37 +1,34 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.30;
 
-contract ManualToken{
+contract ManualToken {
+    mapping(address => uint256) private balances;
 
-    mapping(address => uint) private balances;
-
-    function name() public pure returns (string memory){
+    function name() public pure returns (string memory) {
         return "ManualToken";
     }
 
-    function symbol() public pure returns (string memory){
+    function symbol() public pure returns (string memory) {
         return "MTK";
     }
 
-    function totalSupply() public pure returns(uint){
+    function totalSupply() public pure returns (uint256) {
         return 100 ether;
-    } 
+    }
 
-    function decimals() public pure returns(uint8){
+    function decimals() public pure returns (uint8) {
         return 18;
     }
 
-    function balanceOf(address account) public view returns(uint){
+    function balanceOf(address account) public view returns (uint256) {
         return balances[account];
     }
 
-    function transfer(address to , uint amount)public {
-        uint previousBalances = balanceOf(msg.sender) + balanceOf(to);
+    function transfer(address to, uint256 amount) public {
+        uint256 previousBalances = balanceOf(msg.sender) + balanceOf(to);
 
         balances[msg.sender] -= amount;
         balances[to] += amount;
-        require(balances[msg.sender] +  balances[to] == previousBalances, "Transfer failed: balance mismatch");
-
+        require(balances[msg.sender] + balances[to] == previousBalances, "Transfer failed: balance mismatch");
     }
-
 }
